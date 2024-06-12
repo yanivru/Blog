@@ -1,6 +1,7 @@
 ---
 title: "Reading and writing Avro files using Apache.Avro library (C#)"
 date: 2014-06-12
+tags: [Avro, Dotnet, C#]
 ---
 <a href="https://github.com/apache/avro">Apache Avro</a> is a data
   serialization library. It is ported to many languages including C#. Finding examples of how to read and write objects from files was difficult. And even more difficult to optimize it for performance. Most of the examples are in Java, and though the code is pretty similar there are still differences. All the code in this article can be found: <a href="https://github.com/yanivru/AvroExamples">here</a>.
