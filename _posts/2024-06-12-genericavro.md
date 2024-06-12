@@ -8,7 +8,7 @@ tags: [Avro, Dotnet, C#]
 
 When using Avro reader and writer you can use them either with GenericRecord or SpecificRecord. GenericRecord can be used when the schema is not known at compile time. You can access the fields of this record either by their name or by the index (the index is faster). SpecificRecord on the other hand is ideal when you know the schema at compile time. You can inherit from SpecificRecord and have explicit access to your fields.
 
-Reading a file using generic records
+<h3>Reading a file using generic records</h3>
 The code first opens a DataFileReader. Notice that we use a fairly complicated constructor. This constructor allows us to provide a DatumReader. This class is responsible for reading a single object from the file. GenericDatumReader is faster than the default reader. We don't specify a reader schema (null), meaning we will read the data using the schema it was written with.
 
     static void Main(string[] args)
@@ -48,7 +48,7 @@ The code first opens a DataFileReader. Notice that we use a fairly complicated c
         Console.WriteLine();
     }
 
-Writing a file using GenericRecord
+<h3>Writing a file using GenericRecord</h3>
 To write to an Avro file you first need to define a schema. The code defines a schema, creates a GenericRecord, fills it with data, and finally adds it to the DataFileWriter. Same with the reader, we specify here the GenericDatumReader which is the faster DatumReader.</div>
 
     using(var stream = File.OpenWrite(@"users.avro"))
