@@ -15,7 +15,7 @@ The code first opens a DataFileReader. Notice that we use a fairly complicated c
     {
         using (var stream = File.OpenRead(@"weather.avro"))
         {
-            using (var reader = DataFileReader&lt;GenericRecord&gt;.OpenReader(stream, null, (ws, rs) =&gt; new GenericDatumReader&lt;GenericRecord&gt;(ws, rs)))
+            using (var reader = DataFileReader<GenericRecord>.OpenReader(stream, null, (ws, rs) => new GenericDatumReader&lt;GenericRecord>(ws, rs)))
             {
                 PrintHeader(reader);
     
@@ -27,7 +27,7 @@ The code first opens a DataFileReader. Notice that we use a fairly complicated c
         }
     }
   
-    private static void PrintHeader(IFileReader&lt;GenericRecord&gt; reader)
+    private static void PrintHeader(IFileReader<GenericRecord> reader)
     {
         var schema = (RecordSchema)reader.GetSchema();
     
@@ -41,7 +41,7 @@ The code first opens a DataFileReader. Notice that we use a fairly complicated c
     
     private static void Print(GenericRecord entry)
     {
-        for(int i = 0; i &lt; entry.Schema.Count; i++)
+        for(int i = 0; i < entry.Schema.Count; i++)
         {
             Console.Write(entry.GetValue(i) + ", ");
         }
@@ -62,7 +62,7 @@ To write to an Avro file you first need to define a schema. The code defines a s
             "{ \"name\" : \"ID\" , \"type\" : \"int\" }]}";
     
         var recordSchema = (RecordSchema)Schema.Parse(schemaJson);
-        using (var writer = DataFileWriter&lt;GenericRecord&gt;.OpenWriter(new GenericDatumWriter&lt;GenericRecord&gt;(recordSchema), stream))
+        using (var writer = DataFileWriter<GenericRecord>.OpenWriter(new GenericDatumWriter<GenericRecord>(recordSchema), stream))
         {
             var record = new GenericRecord(recordSchema);
             record.Add(0, "user1");
