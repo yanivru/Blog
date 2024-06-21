@@ -15,7 +15,7 @@ The code first opens a DataFileReader. Notice that we use a fairly complicated c
     {
         using (var stream = File.OpenRead(@"weather.avro"))
         {
-            using (var reader = DataFileReader<GenericRecord>.OpenReader(stream, null, (ws, rs) => new GenericDatumReader&lt;GenericRecord>(ws, rs)))
+            using (var reader = DataFileReader<GenericRecord>.OpenReader(stream, null, (ws, rs) => new GenericDatumReader<GenericRecord>(ws, rs)))
             {
                 PrintHeader(reader);
     
